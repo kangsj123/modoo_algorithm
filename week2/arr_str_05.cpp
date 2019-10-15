@@ -2,35 +2,28 @@ class Solution {
 public:
     vector<string> letterCombinations(string digits) {
         queue<pair<string,int>>qu;
-        vector<vector<string>>v;
+        unordered_map<int,string>number={{2,"abc"}, {3,"def"}, {4,"ghi"}, {5,"jkl"},
+            {6,"mno"}, {7,"pqrs"}, {8,"tuv"}, {9,"wxyz"}};
         vector<string>ans;
-        v.resize(10);
-        v[2]={"a","b","c"};
-        v[3]={"d","e","f"};
-        v[4]={"g","h","i"};
-        v[5]={"j","k","l"};
-        v[6]={"m","n","o"};
-        v[7]={"p","q","r","s"};
-        v[8]={"t","u","v"};
-        v[9]={"w","x","y","z"};
-        
         int sz=digits.length();
-        qu.push(make_pair("",0));
-        while(!qu.empty()){
-            string str=qu.front().first;
-            int index=qu.front().second;
-            qu.pop();
-            
-            if(index==sz){
-                if(index>0)
-                    ans.push_back(str);
-                continue;
+        
+        for(int i=0;i<sz;i++){
+            int num=digits.at(i)-'0';
+            string str=number[num];
+            if(i==0){
+                for(int j=0;j<str.length();j++)
+                    ans.push_back(str.substr(j,1));
             }
-            int num=digits.at(index)-'0';
-            for(auto i:v[num]){
-                qu.push(make_pair(str+i,index+1));
+            else{
+                int n=ans.size();
+                for(int j=0;j<n;j++){
+                    for(int k=0;k<str.length();k++)
+                        ans.push_back(ans[j]+str[k]);
+                }
+                ans.erase(ans.begin(),ans.begin()+n);
             }
         }
+        
         return ans;
     }
 };
