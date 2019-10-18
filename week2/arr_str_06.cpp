@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int firstMissingPositive(vector<int>& nums) {
+    int firstMissingPositive2(vector<int>& nums) {
         int n=nums.size();
         for(int i=0;i<n;i++){
             int indx=i;
@@ -23,5 +23,22 @@ public:
                 return i+1;
         }
         return n+1; 
+    }
+    
+    int firstMissingPositive1(vector<int>& nums) {
+        int n=nums.size();
+        int frequency[n+1];
+        for(int i=0;i<=n;i++)
+            frequency[i]=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]<=0 || nums[i]>n)continue;
+            frequency[nums[i]]++;
+        }
+        for(int i=1;i<=n;i++){
+            if(frequency[i]==0)
+                return i;
+        }
+        return n+1;
+            
     }
 };
