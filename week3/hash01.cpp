@@ -1,3 +1,32 @@
+typedef pair<int,int> pii;
+
+class Solution {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        int cnt, sz=nums.size();
+        unordered_map<int,int>freq;
+        vector<int> ans;
+        vector<pii>vec;
+        
+        for(int i=0;i<sz;i++){
+            if(freq.find(nums[i])!=freq.end())
+                freq[nums[i]]=freq[nums[i]]+1;
+            else
+                freq[nums[i]]=1;
+        }
+        
+        //sort unordered map by value
+        copy(freq.begin(),freq.end(),back_inserter<vector<pii>>(vec));
+        sort(vec.begin(),vec.end(),[](const pii& l, const pii& r){
+            return l.second>r.second;
+        });
+        
+        for(int i=0;i<k;i++)
+            ans.push_back(vec[i].first);
+        
+        return ans;
+    }
+};
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
