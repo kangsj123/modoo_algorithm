@@ -1,6 +1,6 @@
 typedef pair<int,int> pii;
 
-class Solution {
+class Solution2 {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         int cnt, sz=nums.size();
@@ -27,7 +27,7 @@ public:
         return ans;
     }
 };
-class Solution {
+class Solution1 {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
         int cnt, sz=nums.size();
