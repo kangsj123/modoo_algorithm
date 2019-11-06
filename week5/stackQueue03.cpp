@@ -1,29 +1,26 @@
 //Using Stack (O(N)/O(N))
 class Solution {
 public:
-    int largestRectangleArea2(vector<int>& heights) {
-        
+    int largestRectangleArea2(vector<int>& heights) {        
         int ans=0;
         int sz=heights.size();
         stack<pair<int,int>>st;
-        
+
         heights.push_back(0);
         
         for(int i=0;i<=sz;i++){
             int h=heights[i];
             int h_indx=i;
             
-            while(!st.empty() && st.top().first>h){
-                
+            while(!st.empty() && st.top().first>h){                
                 int top_val=st.top().first;
                 int top_indx=st.top().second;
-                st.pop();
-                
                 int rec=top_val*(i-top_indx);
                 if(rec>ans)
                     ans=rec;
                 
                 h_indx=top_indx;
+		st.pop();
             }
             st.push(make_pair(heights[i],h_indx));
         }
