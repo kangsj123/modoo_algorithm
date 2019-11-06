@@ -17,8 +17,7 @@ public:
                 int top_indx=st.top().second;
                 int rec=top_val*(i-top_indx);
                 if(rec>ans)
-                    ans=rec;
-                
+                    ans=rec;               
                 h_indx=top_indx;
 		st.pop();
             }
