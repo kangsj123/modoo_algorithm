@@ -1,5 +1,33 @@
 typedef pair<int,int> pii;
 
+class Solution3 {
+public:
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        int sz=nums.size();
+        unordered_map<int,int>um;
+        priority_queue<pair<int,int>>pq;
+        vector<int>ans;
+        
+        for(int i=0;i<sz;i++)
+            um[nums[i]]++;
+        
+        for(auto i:um){
+            pq.push(make_pair(-i.second,i.first));
+            
+            if(pq.size()>k)
+                pq.pop();
+        }
+        
+        while(!pq.empty()){
+            ans.push_back(pq.top().second);
+            pq.pop();
+        }
+        
+        return ans;
+    }
+};
+
 class Solution2 {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
