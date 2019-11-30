@@ -16,12 +16,13 @@ public:
         for(int i=0;i<sz;i++){
             for(int j=i-1;j>=0;j--){
                 for(int k=j;k<i;k++){
-                    dp[j][i]=min(dp[j][i],max_table[j][k]*max_table[k+1][i]+dp[j][k]+dp[k+1][i]);
+                    if(dp[j][i]==0)
+                        dp[j][i]=max_table[j][k]*max_table[k+1][i]+dp[j][k]+dp[k+1][i];
+                    else
+                        dp[j][i]=min(dp[j][i],max_table[j][k]*max_table[k+1][i]+dp[j][k]+dp[k+1][i]);
                 }
             }
         }
         return dp[0][sz-1];
     }
 };
-
-
