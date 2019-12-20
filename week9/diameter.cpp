@@ -8,6 +8,8 @@
  * };
  */
 class Solution {
+// time complexity : O(N)
+// space complexity : O(H)
 public:
     int ans=0;
     int diameterOfBinaryTree(TreeNode* root) {
