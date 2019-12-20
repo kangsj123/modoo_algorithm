@@ -1,5 +1,5 @@
 class Solution {
-// time complexity : O(N)
+// time complexity : O(N+E)
 // space complexity : O(N)
 public:
     bool canVisitAllRooms(vector<vector<int>>& rooms) {
