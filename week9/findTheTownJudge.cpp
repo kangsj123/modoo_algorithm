@@ -1,7 +1,7 @@
 class Solution {
 public:
     //time complexity : O(N+E)
-    //space complexity : O(N+E)
+    //space complexity : O(N)
     int findJudge(int N, vector<vector<int>>& trust) {
         vector<bool>hasOutdegree;
         vector<int>indegree;
